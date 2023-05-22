@@ -5,5 +5,5 @@ MPU6050 is basically a sensor for motion processing devices. It is the world fir
 
 ![MPU6050](https://github.com/josuecarrera/land_MPU6050/assets/58863692/f95994c2-acad-4d17-95bd-e325da59bdb8)
 
-#Conection arduino with module MPU6050
+# Conection arduino with module MPU6050
 ![mpu6050-con-arduino](https://github.com/josuecarrera/land_MPU6050/assets/58863692/5c2a9cb4-2f85-4835-83df-78957ebd0be2)
