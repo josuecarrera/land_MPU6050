@@ -11,7 +11,7 @@ MPU6050 is basically a sensor for motion processing devices. It is the world fir
 # Library using Adafruit MPU6050
 
 #Documentation
-<p>Documentation on Github pages<a>https://adafruit.github.io/Adafruit_MPU6050/html/class_adafruit___m_p_u6050.html</a></p>
+[Documentation on Github pages] (https://adafruit.github.io/Adafruit_MPU6050/html/class_adafruit___m_p_u6050.html)
 
 # Interface create with Qt desing 
 
