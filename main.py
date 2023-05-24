@@ -17,7 +17,7 @@ class MatplotlibWidget(QMainWindow):
         self.setWindowTitle("PyQt5 & Matplotlib Example GUI")
 
         # Crea la variable del boton
-        self.pushButton_generate_random_signal.clicked.connect(self.update_graph)
+       # self.pushButton_generate_random_signal.clicked.connect(self.update_graph)
         # crea la variable de la venta de graficas
         self.addToolBar(NavigationToolbar(self.MplWidget.canvas,self.MplWidget_2.canvas, self))
         
@@ -38,6 +38,9 @@ class MatplotlibWidget(QMainWindow):
 
         # cosinus_signal = np.cos(2*np.pi*f*t)
         # sinus_signal = np.sin(2*np.pi*f*t)
+        x_data = []
+        y_data = []
+        z_data = []
         if data:
             values = data.split(',')
             if len(values) == 4:
@@ -45,10 +48,10 @@ class MatplotlibWidget(QMainWindow):
                 y = float(values[1])
                 z = float(values[2])
                 magnitude = float(values[3])
-                print(magnitude)
+                #print(x)
 
                 self.MplWidget.canvas.axes.clear()
-                self.MplWidget.canvas.axes.plot([1,2,3], [x,y,z])
+                self.MplWidget.canvas.axes.plot([0,1,2], [x,y,z])
                 self.MplWidget_2.canvas.axes.plot([1, 2, 3], [magnitude, magnitude, magnitude])
                 self.MplWidget.canvas.axes.legend(('aceleracion', 'magnitud'), loc=('upper right'))
                 self.MplWidget.canvas.axes.set_title('Aceleracion')
@@ -57,6 +60,7 @@ class MatplotlibWidget(QMainWindow):
                 self.MplWidget_2.canvas.draw()
         
                 self.update_soil_type(magnitude)
+                self.update_magnitude_type(magnitude)
                 self.update_axes_type(x,y,z)
 
     def update_soil_type(self, magnitude):
@@ -79,6 +83,12 @@ class MatplotlibWidget(QMainWindow):
         self.label_axis_x.setText(axes_type_x)
         self.label_axis_y.setText(axes_type_y)
         self.label_axis_z.setText(axes_type_z)
+
+    def update_magnitude_type(self, magnitude):
+        magnitude_type = str(magnitude)
+
+        self.label_magnitude_type.setText(magnitude_type)
+       
 
 app = QApplication([])
 window = MatplotlibWidget()
