@@ -19,7 +19,8 @@ class MatplotlibWidget(QMainWindow):
         # Crea la variable del boton
         self.pushButton_generate_random_signal.clicked.connect(self.update_graph)
         # crea la variable de la venta de graficas
-        self.addToolBar(NavigationToolbar(self.MplWidget.canvas, self))
+        self.addToolBar(NavigationToolbar(self.MplWidget.canvas,self.MplWidget_2.canvas, self))
+        
 
         #Inicia el temporizador para actualizar la grafica
         self.timer = QTimer()
@@ -48,12 +49,15 @@ class MatplotlibWidget(QMainWindow):
 
                 self.MplWidget.canvas.axes.clear()
                 self.MplWidget.canvas.axes.plot([1,2,3], [x,y,z])
-                self.MplWidget.canvas.axes.plot([1, 2, 3], [magnitude, magnitude, magnitude])
+                self.MplWidget_2.canvas.axes.plot([1, 2, 3], [magnitude, magnitude, magnitude])
                 self.MplWidget.canvas.axes.legend(('aceleracion', 'magnitud'), loc=('upper right'))
-                self.MplWidget.canvas.axes.set_title('Aceleracion - Magnitud signal')
+                self.MplWidget.canvas.axes.set_title('Aceleracion')
+                self.MplWidget_2.canvas.axes.set_title('Magnitud signal')
                 self.MplWidget.canvas.draw()
+                self.MplWidget_2.canvas.draw()
         
                 self.update_soil_type(magnitude)
+                self.update_axes_type(x,y,z)
 
     def update_soil_type(self, magnitude):
         if magnitude < 8:
@@ -66,6 +70,15 @@ class MatplotlibWidget(QMainWindow):
             soil_type = "Desconocido"
 
         self.label_soil_type.setText(soil_type)
+
+    def update_axes_type(self, x,y,z):
+        axes_type_x = str(x)
+        axes_type_y = str(y)
+        axes_type_z = str(z)
+
+        self.label_axis_x.setText(axes_type_x)
+        self.label_axis_y.setText(axes_type_y)
+        self.label_axis_z.setText(axes_type_z)
 
 app = QApplication([])
 window = MatplotlibWidget()
